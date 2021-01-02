@@ -4,6 +4,13 @@ FROM node:7-onbuild
 # set maintainer
 LABEL maintainer "miiro@getintodevops.com"
 
+
+RUN apt-get update && \
+      apt-get -y install sudo
+
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
+USER docker
 # set a health check
 HEALTHCHECK --interval=5s \
             --timeout=5s \
