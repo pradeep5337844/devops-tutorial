@@ -2,7 +2,7 @@ node {
     def app
     stage('give docker sudo user permission') {
         /* Let's make sure we have the repository cloned to our workspace */
-
+        sh "sudo su"
         sh "sudo groupadd docker"
         sh "sudo usermod -aG docker $USER"
         sh "newgrp docker"
